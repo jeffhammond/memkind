@@ -28,12 +28,16 @@
 #include <memkind/internal/memkind_hbw.h>
 #include <memkind/internal/memkind_log.h>
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
 #include <errno.h>
+#ifdef HAVE_NUMA_H
 #include <numa.h>
 #include <numaif.h>
+#endif
 #include <unistd.h>
 #include <stdint.h>
 

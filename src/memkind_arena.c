@@ -28,15 +28,21 @@
 #include <memkind/internal/memkind_private.h>
 #include <memkind/internal/memkind_log.h>
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
 #include <stdint.h>
 #include <unistd.h>
+#ifdef HAVE_PTHREAD_H
 #include <pthread.h>
+#endif
 #include <errno.h>
+#ifdef HAVE_NUMA_H
 #include <numa.h>
 #include <numaif.h>
+#endif
 #include <jemalloc/jemalloc.h>
 #include <utmpx.h>
 #include <sched.h>

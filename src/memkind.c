@@ -41,7 +41,9 @@
 
 #include "config.h"
 
+#ifdef HAVE_NUMA_H
 #include <numa.h>
+#endif
 #include <sys/param.h>
 #include <sys/mman.h>
 #include <stdint.h>
@@ -49,7 +51,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#ifdef HAVE_PTHREAD_H
 #include <pthread.h>
+#endif
 #include <errno.h>
 #include <signal.h>
 #include <fcntl.h>

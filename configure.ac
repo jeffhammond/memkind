@@ -29,6 +29,8 @@ AC_PREREQ([2.64])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_INIT([memkind],m4_esyscmd([tr -d '\n' < VERSION]))
 
+AC_CONFIG_MACRO_DIR([m4])
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([memkind.spec.mk])
 
@@ -191,6 +193,16 @@ AM_CONDITIONAL([HAVE_CXX11], [test "x$HAVE_CXX11" = x1])
 
 LT_PREREQ([2.2])
 LT_INIT
+
+if test "x$OPENMP_CFLAGS" = "x" ; then
+  echo "WARNING: Could not locate OpenMP support. This warning can also occur if compiler already supports OpenMP"
+fi
+
+AC_CHECK_HEADERS([pthread.h omp.h numa.h])
+AC_CHECK_LIB([numa],[numa_available])
+AX_OPENMP([AC_DEFINE(HAVE_OPENMP,1,[Defined when OpenMP is detected])])
+AX_PTHREAD([AC_DEFINE(HAVE_PTHREADS,1,[Defined when POSIX thread library is detected])])
+AC_CHECK_FUNC([posix_fallocate], [AC_DEFINE([HAVE_POSIX_FALLOCATE], [1], [Define if posix_fallocate exists.])])
 
 AC_CONFIG_FILES([Makefile])
 

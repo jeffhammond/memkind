@@ -28,6 +28,8 @@
 #include <memkind/internal/memkind_private.h>
 #include <memkind/internal/memkind_log.h>
 
+#include "config.h"
+
 #include <sys/mman.h>
 #ifndef MAP_HUGETLB
 #define MAP_HUGETLB 0x40000
@@ -38,8 +40,12 @@
 
 #include <stdio.h>
 #include <errno.h>
+#ifdef HAVE_NUMA_H
 #include <numa.h>
+#endif
+#ifdef HAVE_PTHREAD_H
 #include <pthread.h>
+#endif
 #include <dirent.h>
 #include <jemalloc/jemalloc.h>
 

@@ -28,8 +28,12 @@
 #include <memkind/internal/tbb_wrapper.h>
 #include <memkind/internal/heap_manager.h>
 
+#include "config.h"
+
+#ifdef HAVE_NUMA_H
 #include <numa.h>
 #include <numaif.h>
+#endif
 #include <sys/mman.h>
 #include <errno.h>
 #include <jemalloc/jemalloc.h>

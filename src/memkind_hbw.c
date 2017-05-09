@@ -30,13 +30,19 @@
 #include <memkind/internal/memkind_log.h>
 #include <memkind/internal/heap_manager.h>
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <limits.h>
+#ifdef HAVE_PTHREAD_H
 #include <pthread.h>
+#endif
+#ifdef HAVE_NUMA_H
 #include <numa.h>
 #include <numaif.h>
+#endif
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>

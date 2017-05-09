@@ -27,7 +27,11 @@
 #include <memkind/internal/memkind_default.h>
 #include <memkind/internal/heap_manager.h>
 
+#include "config.h"
+
+#ifdef HAVE_NUMA_H
 #include <numa.h>
+#endif
 
 static struct bitmask *regular_nodes_mask = NULL;
 
