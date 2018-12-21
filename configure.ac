@@ -26,6 +26,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
+AC_CONFIG_MACRO_DIRS([m4])
 AC_INIT([memkind],m4_esyscmd([tr -d '\n' < VERSION]))
 
 AC_CONFIG_HEADERS([config.h])
